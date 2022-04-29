@@ -12,7 +12,7 @@ app.use((_, res, next) => {
 })
 
 app.get('/ip', (req, res) => {
-    res.send(req.ip)
+    res.send((req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim())
 })
 
 app.listen(PORT, () => console.log(`listening: ${PORT}`))
