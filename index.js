@@ -16,7 +16,11 @@ app.use((_, res, next) => {
 app.use(express.static("public"));
 
 app.get('/ip', (req, res) => {
-    res.send({ ip: (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim() })
+    try {
+        res.status(200).send({ ip: (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim() })
+    } catch (error) {
+        res.status(500).send({ error: "server error" })
+    }
 })
 
 app.listen(PORT, () => console.log(`listening: ${PORT}`))
