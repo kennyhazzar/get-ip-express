@@ -1,1 +1,1 @@
-﻿node index.js
+﻿node src/app.js
