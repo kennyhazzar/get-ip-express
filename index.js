@@ -1,6 +1,8 @@
 ﻿const express = require('express')
 const app = express()
+const path = require('path')
 require('dotenv/config')
+
 const PORT = process.env.PORT
 
 app.use(express.json())
@@ -11,8 +13,10 @@ app.use((_, res, next) => {
     next()
 })
 
+app.use(express.static("public"));
+
 app.get('/ip', (req, res) => {
-    res.send((req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim())
+    res.send({ ip: (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim() })
 })
 
 app.listen(PORT, () => console.log(`listening: ${PORT}`))

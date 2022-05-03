@@ -1,0 +1,21 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.ip {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+#ip__inner {
+    font-weight: 600;
+}
