@@ -16,24 +16,7 @@
             <span>Твой IP: <span id="ip__inner">Подождите...</span></span>
         </div>
     </div>
-
-    <script>
-        async function getIp() {
-            fetch('/ip')
-                .then((response) => {
-                    let $ip = document.querySelector("#ip__inner")
-                    if (response.ok) {
-                        response.json()
-                            .then((body) => {
-                                $ip.textContent = body.ip
-                            })
-                    } else {
-                        $ip.textContent = "Ошибка получения IP"
-                    }
-                })
-        }
-        getIp()
-    </script>
+    <script src="./js/getIp.js"></script>
 </body>
 
 </html>
